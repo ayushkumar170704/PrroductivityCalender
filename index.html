@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Productivity Calendar</h1>
+            <div class="controls">
+                <div class="nav-controls">
+                    <button class="nav-btn" id="prevBtn">‹ Previous</button>
+                    <div class="current-date" id="currentDate"></div>
+                    <button class="nav-btn" id="nextBtn">Next ›</button>
+                </div>
+                <div class="view-controls">
+                    <button class="view-btn active" data-view="month">Month</button>
+                    <button class="view-btn" data-view="week">Week</button>
+                    <button class="view-btn" data-view="day">Day</button>
+                </div>
+                <div class="action-controls">
+                    <button class="action-btn" id="addEventBtn">+ Add Event</button>
+                    <button class="action-btn" id="exportBtn">Export ICS</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Month View -->
+            <div class="calendar" id="monthView">
+                <div class="calendar-header">
+                    <div>Sunday</div>
+                    <div>Monday</div>
+                    <div>Tuesday</div>
+                    <div>Wednesday</div>
+                    <div>Thursday</div>
+                    <div>Friday</div>
+                    <div>Saturday</div>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+
+            <!-- Week View -->
+            <div class="week-view" id="weekView">
+                <div class="week-grid" id="weekGrid">
+                    <div class="week-header">Time</div>
+                    <div class="week-header">Sun</div>
+                    <div class="week-header">Mon</div>
+                    <div class="week-header">Tue</div>
+                    <div class="week-header">Wed</div>
+                    <div class="week-header">Thu</div>
+                    <div class="week-header">Fri</div>
+                    <div class="week-header">Sat</div>
+                </div>
+            </div>
+
+            <!-- Day View -->
+            <div class="day-view" id="dayView">
+                <div class="day-header" id="dayHeader"></div>
+                <div class="day-content" id="dayContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add New Event</h2>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Event Title</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventDate">Date</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventTime">Time</label>
+                    <input type="time" id="eventTime">
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventDescription">Description</label>
+                    <textarea id="eventDescription" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventReminder">Reminder (minutes before)</label>
+                    <select id="eventReminder">
+                        <option value="0">No reminder</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="60">1 hour</option>
+                        <option value="1440">1 day</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Category Color</label>
+                    <div class="category-colors">
+                        <div class="color-option selected" data-color="#667eea" style="background: #667eea;"></div>
+                        <div class="color-option" data-color="#4facfe" style="background: #4facfe;"></div>
+                        <div class="color-option" data-color="#43e97b" style="background: #43e97b;"></div>
+                        <div class="color-option" data-color="#fa709a" style="background: #fa709a;"></div>
+                        <div class="color-option" data-color="#ffecd2" style="background: #ffecd2;"></div>
+                        <div class="color-option" data-color="#ff6b6b" style="background: #ff6b6b;"></div>
+                        <div class="color-option" data-color="#4ecdc4" style="background: #4ecdc4;"></div>
+                        <div class="color-option" data-color="#45b7d1" style="background: #45b7d1;"></div>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn secondary" id="cancelBtn">Cancel</button>
+                    <button type="button" class="modal-btn danger" id="deleteBtn" style="display:none;">Delete</button>
+                    <button type="submit" class="modal-btn primary" id="saveBtn">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
